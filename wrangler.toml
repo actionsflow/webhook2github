@@ -1,0 +1,13 @@
+name = "webhook-dev"
+type = "webpack"
+account_id = "03e7294bdb3750ed5a0d6afef6d770e4"
+workers_dev = true
+route = ""
+zone_id = "73599f8e5f0cdb85f65ae7b132f574fc"
+webpack_config = "webpack.config.js"
+vars = { ENVIRONMENT = "development" }
+
+[env.production]
+name = "webhook"
+vars = { ENVIRONMENT = "production" }
+
