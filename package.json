@@ -1,7 +1,7 @@
 {
   "name": "webhook2github",
   "private": true,
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Cloudflare worker TypeScript template",
   "main": "index.js",
   "scripts": {
