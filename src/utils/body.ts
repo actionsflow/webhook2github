@@ -32,7 +32,7 @@ export async function getBody(
       // return objectURL
     }
   } catch (error) {
-    log.warn('parse body error', error)
+    // log.warn('parse body error', error)
     return null
   }
 }

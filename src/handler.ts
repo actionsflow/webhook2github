@@ -9,8 +9,8 @@ export async function handleRequest(
   request: Request,
   event: FetchEvent,
 ): Promise<Response> {
-  log.debug(`new [${request.method}] request: ${request.url}`)
-  log.debug(`request headers: ${getHeadersObj(request.headers)}`)
+  // log.debug(`new [${request.method}] request: ${request.url}`)
+  // log.debug(`request headers: ${getHeadersObj(request.headers)}`)
   try {
     let method = request.method
     if (method === 'OPTIONS') {
@@ -42,11 +42,11 @@ export async function handleRequest(
         try {
           body = await getBody(request)
         } catch (error) {
-          log.warn('read body error', error)
+          // log.warn('read body error', error)
         }
       }
       if (body) {
-        log.debug('request body: ', body)
+        // log.debug('request body: ', body)
       }
       // format request
       const newRequest: IRequest = {
@@ -78,7 +78,7 @@ export async function handleRequest(
     })
     return newResponse
   } catch (e) {
-    event.waitUntil(report(e, request))
+    // event.waitUntil(report(e, request))
     return new Response(
       JSON.stringify({
         message: e.message || 'An error occurred!',

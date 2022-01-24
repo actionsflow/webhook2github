@@ -42,30 +42,30 @@ const RETRIES = 5
 // })
 
 export async function log(err: Error, request: Request) {
-  const body = JSON.stringify(toSentryEvent(err, request))
+  // const body = JSON.stringify(toSentryEvent(err, request))
 
-  for (let i = 0; i <= RETRIES; i++) {
-    const res = await fetch(
-      `https://sentry.io/api/${SENTRY_PROJECT_ID}/store/`,
-      {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'X-Sentry-Auth': [
-            'Sentry sentry_version=7',
-            `sentry_client=${CLIENT_NAME}/${CLIENT_VERSION}`,
-            `sentry_key=${SENTRY_KEY_LOCAL}`,
-          ].join(', '),
-        },
-        body,
-      },
-    )
-    if (res.status === 200) {
-      return
-    }
-    // We couldn't send to Sentry, try to log the response at least
-    console.error({ httpStatus: res.status, ...(await res.json()) }) // eslint-disable-line no-console
-  }
+  // for (let i = 0; i <= RETRIES; i++) {
+  //   const res = await fetch(
+  //     `https://sentry.io/api/${SENTRY_PROJECT_ID}/store/`,
+  //     {
+  //       method: 'POST',
+  //       headers: {
+  //         'Content-Type': 'application/json',
+  //         'X-Sentry-Auth': [
+  //           'Sentry sentry_version=7',
+  //           `sentry_client=${CLIENT_NAME}/${CLIENT_VERSION}`,
+  //           `sentry_key=${SENTRY_KEY_LOCAL}`,
+  //         ].join(', '),
+  //       },
+  //       body,
+  //     },
+  //   )
+  //   if (res.status === 200) {
+  //     return
+  //   }
+  //   // We couldn't send to Sentry, try to log the response at least
+  //   console.error({ httpStatus: res.status, ...(await res.json()) }) // eslint-disable-line no-console
+  // }
 }
 
 function toSentryEvent(err: any, request: Request) {
